@@ -60,6 +60,10 @@ public class GlobeSortClient {
         secs = (int)(diff / 1000); 
         diff -= secs * 1000;
         System.out.println(String.format("Spend %d.%d secs", secs, diff));
+        Integer[] res = response.getValuesList().toArray(new Integer[response.getValuesList().size()]);
+        int sort_secs = response.getSecs();
+        int sort_msecs = response.getMsecs();
+        System.out.println(String.format("Sorting %d spend %d.%d secs", response.getValuesList().size(), sort_secs, sort_msecs));
     }
 
     public void shutdown() throws InterruptedException {

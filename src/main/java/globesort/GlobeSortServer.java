@@ -93,13 +93,15 @@ public class GlobeSortServer {
             for(Integer val : values) {
                 responseBuilder.addValues(val);
             }
-            IntArray response = responseBuilder.build();
-            responseObserver.onNext(response);
-            responseObserver.onCompleted();
             long diff = System.currentTimeMillis() - start;
             int secs = (int)(diff / 1000); 
             diff -= secs * 1000;
-            System.out.println(String.format("Spend %d.%d secs", secs, diff));
+            int msecs = (int)(diff);
+            responseBuilder.setSecs(secs);
+            responseBuilder.setMsecs(msecs);
+            IntArray response = responseBuilder.build();
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
         }
     }
 }
