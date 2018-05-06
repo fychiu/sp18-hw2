@@ -51,19 +51,18 @@ public class GlobeSortClient {
         diff -= secs * 1000;
         System.out.println(String.format("Spend %d.%d secs", secs, diff));
 
-        start = System.currentTimeMillis();
         System.out.println("Requesting server to sort array");
         IntArray request = IntArray.newBuilder().addAllValues(Arrays.asList(values)).build();
+        start = System.currentTimeMillis();
         IntArray response = serverStub.sortIntegers(request);
         System.out.println("Sorted array");
         diff = System.currentTimeMillis() - start;
         secs = (int)(diff / 1000); 
         diff -= secs * 1000;
         System.out.println(String.format("Spend %d.%d secs", secs, diff));
-        Integer[] res = response.getValuesList().toArray(new Integer[response.getValuesList().size()]);
         int sort_secs = response.getSecs();
         int sort_msecs = response.getMsecs();
-        System.out.println(String.format("Sorting %d spend %d.%d secs", response.getValuesList().size(), sort_secs, sort_msecs));
+        System.out.println(String.format("Sorting spend %d.%d secs", sort_secs, sort_msecs));
     }
 
     public void shutdown() throws InterruptedException {
