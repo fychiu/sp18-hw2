@@ -1,6 +1,6 @@
 #!/bin/bash
-
 sudo yum -y update
+sudo yum install git-all
 sudo yum install -y java-1.8.0-openjdk-*
 sudo yum remove -y java-1.7.0-openjdk-*
 sudo pip install grpcio grpcio-tools
