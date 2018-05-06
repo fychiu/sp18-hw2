@@ -9,3 +9,8 @@ tar -xzf apache-maven-3.5.2-bin.tar.gz
 sudo mv apache-maven-3.5.2 /opt/.
 rm apache-maven-3.5.2-bin.tar.gz
 echo "PATH=\$PATH:/opt/apache-maven-3.5.2/bin" >> ~/.bashrc
+git clone https://github.com/fychiu/sp18-hw2
+cd sp18-hw2
+mvn protobuf:compile protobuf:compile-custom
+mvn package
+./target/globesort/bin/runServer 8080
